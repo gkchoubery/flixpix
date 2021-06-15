@@ -1,0 +1,25 @@
+{
+    "intro": [
+        {
+            "id": 1,
+            "heading": "Lorem Ipsum",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "src": "https://www.w3schools.com/tags/img_girl.jpg",
+            "alt": "Random image"
+        },
+        {
+            "id": 2,
+            "heading": "Lorem Ipsum",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "src": "https://www.w3schools.com/tags/img_girl.jpg",
+            "alt": "Random image"
+        },
+        {
+            "id": 3,
+            "heading": "Lorem Ipsum",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "src": "https://www.w3schools.com/tags/img_girl.jpg",
+            "alt": "Random image"
+        }
+    ]
+}
