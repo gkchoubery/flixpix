@@ -1,24 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './App.css';
-import CarouselComponent, { CarouselInputType } from './components/carousel'
+import CarouselComponent from './components/carousel'
+import FeaturedComponent, {IProps as FeaturedComponentProps} from './components/featured'
 import Api from './utils/api';
 
 const api = new Api();
 
-function App() {
+export default class App extends React.Component {
 
-  const [intro, setIntro] = useState<CarouselInputType[]>();
+  api: Api;
+  featuredContentBlock: FeaturedComponentProps[] = [
+    {
+      title: 'Featured Movies',
+      type: 'movie'
+    },
+    {
+      title: 'Featured TV Series',
+      type: 'series'
+    }
+  ];
 
-  useEffect(() => {
-    api.getIntroData().then(d => {
-      setIntro(d);
-    });
-  }, []);
-  return (
-    <div>
-      {intro ? <CarouselComponent data={intro} /> : null}
-    </div>
-  );
+  constructor(props: any) {
+    super(props);
+    this.api = new Api();
+  }
+
+  render() {
+    return (
+      <div>
+        <CarouselComponent />
+        {this.featuredContentBlock.map(({ title, type }) => <FeaturedComponent title={title} type={type} />)}
+      </div>
+    );
+  }
 }
-
-export default App;

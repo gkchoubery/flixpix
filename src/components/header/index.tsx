@@ -12,7 +12,15 @@ export default class HeaderComponent extends Component {
                     </LinkContainer>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="ml-auto">
+                        <Nav className="mr-auto">
+                            <LinkContainer to="/">
+                                <Nav.Link>Home</Nav.Link>
+                            </LinkContainer>
+                            <LinkContainer to="browse">
+                                <Nav.Link>Browse</Nav.Link>
+                            </LinkContainer>
+                        </Nav>
+                        <Nav>
                             <LinkContainer to="login">
                                 <Nav.Link>Login</Nav.Link>
                             </LinkContainer>

@@ -1,0 +1,17 @@
+/* .carousel-inner {
+    width: 100%;
+    height: calc(100vh * 0.5);
+    text-align: center;
+} */
+
+.carousel-caption {
+    padding: 8px;
+    background-color: black;
+    border-radius: 8px;
+}
+
+@media only screen and (max-width: 600px) {
+    .carousel-caption p {
+        display: none;
+    }
+}

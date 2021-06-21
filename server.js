@@ -10,5 +10,5 @@ server.use(express.static('build'));
 server.use(middlewares);
 server.use('/api', router);
 server.listen(PORT, () => {
-  console.log('JSON Server is running')
+  console.log('JSON Server is running on ', PORT)
 });

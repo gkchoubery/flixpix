@@ -1,5 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
-import { CarouselInputType } from '../components/carousel';
+import { ICarousel } from '../components/carousel';
+import { ShowItem } from '../components/showDetails';
 
 export default class Api {
 
@@ -20,7 +21,11 @@ export default class Api {
         }).then(t => t.data);
     }
 
-    public getIntroData() {
-        return this.doRequest<CarouselInputType[]>('intro', 'GET')
+    public getFeaturedContent(type: 'movie' | 'series', limit: number = 4, page: number = 1) {
+        return this.doRequest<ShowItem[]>(`shows?type=${type}&featured=true&_limit=${limit}&_page=${page}`, 'GET');
+    }
+
+    public getCarouselImages() {
+        return this.doRequest<ICarousel[]>(`intro`, 'GET');
     }
 }
