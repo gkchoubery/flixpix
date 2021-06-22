@@ -6,7 +6,7 @@
 
 .carousel-caption {
     padding: 8px;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 8px;
 }
 

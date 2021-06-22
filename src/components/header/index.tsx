@@ -1,11 +1,12 @@
 import { Component } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import './index.css';
 
 export default class HeaderComponent extends Component {
     render() {
         return (
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar className="fixed-top" collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
                     <LinkContainer to="/">
                         <Navbar.Brand>FlixPix</Navbar.Brand>
