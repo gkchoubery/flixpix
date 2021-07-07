@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import ContentComponent from './components/content';
 import CarouselComponent from './components/carousel'
 import FeaturedComponent, {IProps as FeaturedComponentProps} from './components/featured'
 import Api from './utils/api';
@@ -29,7 +30,8 @@ export default class App extends React.Component {
     return (
       <div>
         <CarouselComponent />
-        {this.featuredContentBlock.map(({ title, type }) => <FeaturedComponent title={title} type={type} />)}
+        {this.featuredContentBlock.map(({ title, type }) => <FeaturedComponent key={title} title={title} type={type} />)}
+        <ContentComponent />
       </div>
     );
   }

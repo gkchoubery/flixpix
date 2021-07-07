@@ -1,0 +1,39 @@
+#content {
+  background-color: #383F45;
+  padding: 3rem 0;
+  margin: 4rem 0;
+}
+
+.content {
+  margin: 44px 0;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  column-gap: 16px;
+}
+
+@media only screen and (max-width: 992px) {
+  .content {
+    grid-template-columns: 50% 50%;
+    row-gap: 16px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .content {
+    grid-template-columns: 100%;
+    row-gap: 16px;
+  }
+}
+
+.count-box {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  text-align: center;
+  width: 100%;
+  background: linear-gradient(to left, #292129, #212921);
+  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+  color: white;
+}

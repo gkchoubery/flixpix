@@ -9,7 +9,7 @@
   list-style: none;
 }
 .featured > ul > li {
-  border: 1px solid #e2e2e2;
+  border: 1px solid #212529;
   border-radius: 0.5rem;
 }
 
@@ -51,4 +51,10 @@
 .featured > ul > li > a {
   padding: 0.5rem 1rem;
   margin: 0.5rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .featured > ul {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
 }

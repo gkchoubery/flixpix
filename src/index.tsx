@@ -8,6 +8,7 @@ import App from './App';
 import NotFoundComponent from './components/notfound';
 import HeaderComponent from './components/header';
 import FooterComponent from './components/footer';
+import './index.css'
 
 ReactDOM.render(
   <React.StrictMode>

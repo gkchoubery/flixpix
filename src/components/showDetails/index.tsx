@@ -5,14 +5,18 @@ interface IProps {
 }
 
 export interface ShowItem {
-    id: number
-    title: string
-    description: string
-    type: 'movie' | 'series'
-    year: number
-    banner: string
-    poster: string
-    featured: boolean
+    id: number;
+    title: string;
+    description: string;
+    type: 'movie' | 'series';
+    year: number;
+    banner: string;
+    poster: string;
+    featured: boolean;
+    rating: number;
+    totalRatings: number;
+    rentPrice: string;
+    buyPrice: string;
 }
 
 export default class ShowDetailsComponent extends Component<IProps> {

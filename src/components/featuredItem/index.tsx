@@ -11,7 +11,7 @@ export default class FeaturedItemComponent extends Component<IProps> {
     return (
       <li>
         <figure>
-          <img src={this.props.data.poster} alt={this.props.data.title} />
+          <img src={`https://image.tmdb.org/t/p/w300/${this.props.data.poster}`} alt={this.props.data.title} />
           <figcaption>
             <h3>{this.props.data.title}</h3>
           </figcaption>
