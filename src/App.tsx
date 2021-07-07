@@ -2,7 +2,9 @@ import React from 'react';
 import './App.css';
 import ContentComponent from './components/content';
 import CarouselComponent from './components/carousel'
-import FeaturedComponent, {IProps as FeaturedComponentProps} from './components/featured'
+import HeaderComponent from './components/header';
+import FooterComponent from './components/footer';
+import FeaturedComponent, { IProps as FeaturedComponentProps } from './components/featured'
 import Api from './utils/api';
 
 const api = new Api();
@@ -28,11 +30,13 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
+        <HeaderComponent />
         <CarouselComponent />
         {this.featuredContentBlock.map(({ title, type }) => <FeaturedComponent key={title} title={title} type={type} />)}
         <ContentComponent />
-      </div>
+        <FooterComponent />
+      </>
     );
   }
 }

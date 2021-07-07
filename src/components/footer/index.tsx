@@ -23,11 +23,6 @@ export default class FooterComponent extends Component {
                             <ul className="footer-links">
                                 <li>
                                     <LinkContainer to="#">
-                                        <a href="/">Spotlights</a>
-                                    </LinkContainer>
-                                </li>
-                                <li>
-                                    <LinkContainer to="#">
                                         <a href="/">Featured Movies</a>
                                     </LinkContainer>
                                 </li>
@@ -75,7 +70,7 @@ export default class FooterComponent extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 col-sm-6 col-xs-12">
-                            <p className="copyright-text">Copyright &copy; {new Date().getFullYear()} All Rights Reserved by Geet Choubey.
+                            <p className="copyright-text">Copyright &copy; {new Date().getFullYear()} All Rights Reserved by Geet Choubey | <a href="mailto:gkchoubery@myseneca.ca">gkchoubery@myseneca.ca</a>.
             </p>
                         </div>
 
