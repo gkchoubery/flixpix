@@ -11,7 +11,7 @@ import './index.css'
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      
+
       <Switch>
         <Route exact path="/" component={App} />
         <Route component={NotFoundComponent} />

@@ -3,7 +3,14 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import './index.css';
 
-export default class HeaderComponent extends Component {
+interface IProps {
+    setModalShow: Function;
+    onLoginHide: Function;
+    onRegisterHide: Function
+}
+
+export default class HeaderComponent extends Component<IProps> {
+    
     render() {
         return (
             <Navbar className="fixed-top" collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -22,12 +29,8 @@ export default class HeaderComponent extends Component {
                             </LinkContainer>
                         </Nav>
                         <Nav>
-                            <LinkContainer to="login">
-                                <Nav.Link>Login</Nav.Link>
-                            </LinkContainer>
-                            <LinkContainer to="register">
-                                <Nav.Link>Sign Up</Nav.Link>
-                            </LinkContainer>
+                            <a className="nav-link custom" onClick={() => this.props.setModalShow('login')}>Login</a>
+                            <a className="nav-link custom" onClick={() => this.props.setModalShow('register')}>Register</a>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

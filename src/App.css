@@ -1,0 +1,16 @@
+.user-modal {
+    background-color: #383F45;
+    color: white;
+}
+
+.close[type=button] {
+    color: white;
+}
+
+.modal-body form button {
+    background: linear-gradient(to left, #292129, #212921);
+}
+
+.modal-body form button:hover {
+    background: #292129;
+}

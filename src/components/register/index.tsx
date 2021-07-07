@@ -1,38 +1,81 @@
 import { Component } from 'react';
-import {Button, Modal} from 'react-bootstrap';
-
+import { Button, Form, Modal } from 'react-bootstrap';
 
 interface IProps {
-  onHide: any;
+  show: boolean;
+  onHide: Function;
 }
 
-export default class RegisterModalComponent extends Component<IProps> {
+interface IState {
+  [x: string]: string;
+}
+
+export default class RegisterModalComponent extends Component<IProps, IState> {
+
+  constructor(props: IProps) {
+    super(props);
+    this.state = {
+      email: '',
+      password: ''
+    }
+  }
+
+  isFormValid = () => {
+    return !!this.state.email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/) &&
+      this.state.password.trim().length > 3 &&
+      this.state.repassword === this.state.password;
+  }
+
+  formInput = (type: 'email' | 'password' | 'repassword', value: string) => {
+    this.setState({
+      [type]: value
+    });
+  }
+
+  onFormSubmit = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    this.props.onHide();
+  }
+
   render() {
     return (
-      <>
-        <Modal
-          size="lg"
-          aria-labelledby="contained-modal-title-vcenter"
-          centered
-        >
-          <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">
-              Modal heading
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <h4>Centered Modal</h4>
-            <p>
-              Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-              dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-              ac consectetur ac, vestibulum at eros.
-            </p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={this.props.onHide}>Close</Button>
-          </Modal.Footer>
-        </Modal>
-      </>
-    );
-  }
+      <Modal
+        {...this.props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        contentClassName="user-modal"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Register
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control type="email" placeholder="Enter email" onChange={(e) => this.formInput('email', e.target.value)} />
+              <Form.Text className="text-muted">
+                We'll never share your email with anyone else.
+              </Form.Text>
+            </Form.Group>
+
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="password" placeholder="Password" onChange={(e) => this.formInput('password', e.target.value)} />
+            </Form.Group>
+
+            <Form.Group controlId="formBasicRePassword">
+              <Form.Label>Confirm Password</Form.Label>
+              <Form.Control type="password" placeholder="Confirm Password" onChange={(e) => this.formInput('repassword', e.target.value)} />
+            </Form.Group>
+            <Button className="float-right" variant="primary" type="submit" onClick={this.onFormSubmit} disabled={!this.isFormValid()}>
+              Sign Up
+            </Button>
+          </Form>
+        </Modal.Body>
+      </Modal>
+    )
+  };
 }
