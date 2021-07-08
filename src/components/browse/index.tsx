@@ -50,7 +50,6 @@ class BrowseComponent extends Component<any, IState> {
     getDom = (s: ShowItem) => {
         return <div key={s.id} className="listing" onClick={() => this.onPosterClick(s.id)} style={{ backgroundImage: `url(${GetUrl(s.poster)})` }}>
             <h2 className='listing-title'>{s.title}</h2>
-            <span className='listing-description'>{s.description.length > 150 ? s.description.substring(0, 150) + '...' : s.description}</span>
         </div>
     }
 

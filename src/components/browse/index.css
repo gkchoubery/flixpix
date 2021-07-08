@@ -32,8 +32,8 @@
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-.listing:hover .listing-title,
-.listing:hover .listing-description {
+.listing:hover .listing-title
+/* .listing:hover .listing-description */ {
     opacity: 1;
     transform: scale(1);
 }
@@ -45,11 +45,11 @@
     text-transform: uppercase;
 }
 
-.listing-description {
+/* .listing-description {
     max-height: 200px;
     transform: scale(0);
     opacity: 0;
     transition: transform 0.24s ease-in 0.05s, opacity 0.3s linear;
     text-overflow: ellipsis;
     overflow: hidden;
-  }
+  } */
