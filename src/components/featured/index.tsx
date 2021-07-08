@@ -8,7 +8,7 @@ import Api from "../../utils/api";
 
 export interface IProps {
   title: string;
-  type: "movie" | "series";
+  type: 'movies' | 'series';
 }
 
 interface IState {

@@ -10,7 +10,7 @@ export default class ContentComponent extends Component {
                 <Container>
                     <div className="content">
                         {
-                            contentData.map(d => <ContentDataComponent contentData={d}></ContentDataComponent>)
+                            contentData.map(d => <ContentDataComponent key={d[1]} contentData={d}></ContentDataComponent>)
                         }
                     </div>
                 </Container>

@@ -20,8 +20,12 @@ export default class Api {
         }).then(t => t.data);
     }
 
-    public getFeaturedContent(type: 'movie' | 'series', limit: number = 6, page: number = 1) {
-        return this.doRequest<ShowItem[]>(`shows?type=${type}&_limit=${limit}&_page=${page}`, 'GET');
+    public getFeaturedContent(type: 'movies' | 'series', limit: number = 6, page: number = 1) {
+        return this.getContent(type, limit, page);
+    }
+
+    public getContent(type: 'movies' | 'series', limit?: number, page?: number) {
+        return this.doRequest<ShowItem[]>(`shows?type=${type}${limit ? `&_limit=${limit}` : ''}${page ? `&_page=${page}` : ''}`, 'GET');
     }
 
     public getCarouselImages() {

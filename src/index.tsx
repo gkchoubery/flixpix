@@ -7,6 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import NotFoundComponent from './components/notfound';
 import './index.css'
+import ShowDetailsComponent from './components/showDetails';
+import BrowseComponent from './components/browse';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,6 +16,8 @@ ReactDOM.render(
 
       <Switch>
         <Route exact path="/" component={App} />
+        <Route path="/browse" component={BrowseComponent} />
+        <Route path="/detail/:id" component={ShowDetailsComponent} />
         <Route component={NotFoundComponent} />
       </Switch>
     </Router>

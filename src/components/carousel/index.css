@@ -1,16 +1,14 @@
-/* .carousel-inner {
-    width: 100%;
-    height: calc(100vh * 0.5);
-    text-align: center;
-} */
-
 .carousel-caption {
     padding: 8px;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 8px;
 }
 
-@media only screen and (max-width: 600px) {
+.carousel-item {
+    max-height: calc(100vw * 0.5);
+}
+
+@media only screen and (max-width: 768px) {
     .carousel-caption p {
         display: none;
     }
