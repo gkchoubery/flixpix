@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
 import { SelectedType } from '../App';
-import { ShowItem } from '../components/showDetails';
+import { ShowItem } from '../interfaces';
 
 export default class Api {
 
@@ -31,5 +31,9 @@ export default class Api {
 
     public getCarouselImages() {
         return this.doRequest<ShowItem[]>(`intro`, 'GET');
+    }
+
+    public getShowDetails(id: string) {
+        return this.doRequest<ShowItem>(`shows/${id}`, 'GET');
     }
 }

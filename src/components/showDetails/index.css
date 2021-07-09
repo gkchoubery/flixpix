@@ -1,0 +1,111 @@
+#detail {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
+}
+
+#detail div .content {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    height: 100%;
+    padding: 4rem 0;
+}
+
+#detail div .content img {
+    display: inline-block;
+    border-radius: 8px;
+    max-height: calc(450px * 0.75);
+    margin: 0 1rem 0 0;
+    transition: 0.5s;
+}
+
+#detail div .content div {
+    display: flex;
+    flex-flow: column;
+}
+
+#detail div .content div .show-type {
+    font-weight: 400;
+    position: absolute;
+    font-size: x-large;
+    padding: 0 0.5rem 4px;
+    margin: 8px 1rem;
+    border-radius: 8px;
+    background-color: chocolate;
+}
+
+#detail div .content div h3 {
+    display: none;
+}
+
+.detail-actions {
+    padding: 2rem 0;
+    flex-flow: row wrap !important;
+    justify-content: flex-start;
+}
+
+.detail-actions button {
+    margin: 1rem 1rem;
+    min-width: 10rem;
+}
+
+.detail-actions button {
+    background: linear-gradient(to left, #292129, #212921);
+    border-color: none !important;
+}
+
+.detail-actions button:hover {
+    background: #292129;
+    border-color: none !important;
+}
+
+.detail-actions button:active {
+    background: #292129;
+    border-color: none !important;
+}
+
+.detail-actions button:focus {
+    background: #292129;
+    border-color: none !important;
+}
+
+.btn:active {
+    background-color: #212921 !important;
+    border-color: #212921 !important;
+}
+
+@media only screen and (max-width: 600px) {
+    #detail div .content {
+        align-items: flex-start;
+    }
+
+    #detail div .content img {
+        max-height: calc(450px * 0.5);
+    }
+    #detail div .content div {
+        max-width: 100%;
+    }
+    #detail div .content div h1 {
+        display: none;
+    }
+    #detail div .content div h3 {
+        display: block;
+    }
+
+    #detail div .content div p {
+        max-width: 100% !important;
+    }
+
+    .detail-actions button {
+        flex: 1;
+    }
+}

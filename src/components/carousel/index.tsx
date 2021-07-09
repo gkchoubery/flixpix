@@ -1,7 +1,7 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
 import Api from '../../utils/api';
-import { ShowItem } from '../showDetails';
+import { ShowItem } from '../../interfaces';
 import './index.css';
 
 export interface IState {
@@ -54,7 +54,7 @@ export default class CarouselComponent extends React.Component<{}, IState> {
                 {this.state.data.map(({ id, title, description, banner }) => {
                     return <Carousel.Item key={id}>
                         <img
-                            className="d-block w-100"
+                            className="d-block w-100" alt={title}
                             src={`https://image.tmdb.org/t/p/original/${banner}`}
                         />
 

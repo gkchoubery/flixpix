@@ -10,7 +10,7 @@ interface IState {
     registerModalShow: boolean;
 }
 
-export default function WithHeaderFooter(WrappedComponent: ComponentType) {
+export default function WithHeaderFooter(WrappedComponent: ComponentType<any>) {
 
     return class extends Component<{}, IState> {
         constructor(props: any) {

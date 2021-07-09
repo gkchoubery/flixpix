@@ -24,7 +24,7 @@ export default class HeaderComponent extends Component<IProps> {
                             <LinkContainer to="/">
                                 <Nav.Link>Home</Nav.Link>
                             </LinkContainer>
-                            <LinkContainer to="browse">
+                            <LinkContainer to="/browse">
                                 <Nav.Link>Browse</Nav.Link>
                             </LinkContainer>
                         </Nav>

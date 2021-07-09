@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { Container, Row, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
 import WithHeaderFooter from '../../hoc'
-import { ShowItem } from '../showDetails';
+import { ShowItem } from '../../interfaces';
 import './index.css';
 import Api from '../../utils/api';
 import GetUrl from '../../utils/image';

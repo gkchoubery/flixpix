@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { ShowItem } from "../showDetails";
+import { ShowItem } from "../../interfaces";
 import { Container } from "react-bootstrap";
 import "./index.css";
 import GetUrl from '../../utils/image';
