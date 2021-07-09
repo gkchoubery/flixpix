@@ -8,7 +8,7 @@ export default class Api {
 
     constructor() {
         this.api = axios.create({
-            baseURL: 'api/'
+            baseURL: '/api/'
         });
     }
 
