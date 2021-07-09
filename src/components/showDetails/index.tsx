@@ -48,7 +48,7 @@ class ShowDetailsComponent extends Component<RouteComponentProps<Params>, IState
 
         return (
             <section id="detail" style={{
-                backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('${GetUrl(this.state.show?.banner!, 'original')}')`
+                backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${GetUrl(this.state.show?.banner!, 'original')}')`
             }}>
 
                 <Container>
