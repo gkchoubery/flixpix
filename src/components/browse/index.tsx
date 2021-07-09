@@ -6,6 +6,7 @@ import './index.css';
 import Api from '../../utils/api';
 import GetUrl from '../../utils/image';
 import { SelectedType } from '../../App';
+import { RouteComponentProps } from 'react-router-dom';
 
 interface IState {
     loading: boolean;
@@ -16,7 +17,7 @@ interface IState {
     allContent: ShowItem[]
 }
 
-class BrowseComponent extends Component<any, IState> {
+class BrowseComponent extends Component<RouteComponentProps<any>, IState> {
 
     api: Api;
 
@@ -49,6 +50,10 @@ class BrowseComponent extends Component<any, IState> {
     }
 
     async componentDidMount() {
+        const type = (new URLSearchParams(this.props.location.search).get('type') || '') as SelectedType;
+        await this.setState({
+            selected: type
+        });
         await this.fetchContent();
     }
 

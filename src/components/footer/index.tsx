@@ -14,7 +14,9 @@ export default class FooterComponent extends Component {
                         <div className="col-sm-12 col-md-6">
                             <h6>About</h6>
                             <p className="text-justify">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                With FlixPix you have the power to make your decisions.
+                                You will be presented with the movies and tv shows that may
+                                be featured or trending. Now, should you choose to buy them or rent is up to you.
                             </p>
                         </div>
 
@@ -22,18 +24,18 @@ export default class FooterComponent extends Component {
                             <h6>Categories</h6>
                             <ul className="footer-links">
                                 <li>
-                                    <LinkContainer to="#">
-                                        <a href="/">Featured Movies</a>
+                                    <LinkContainer to="/browse?type=movies">
+                                        <a href="/">All Movies</a>
                                     </LinkContainer>
                                 </li>
                                 <li>
-                                    <LinkContainer to="#">
-                                        <a href="/">Featured TV Shows</a>
+                                    <LinkContainer to="/browse?type=series">
+                                        <a href="/">All TV Shows</a>
                                     </LinkContainer>
                                 </li>
                                 <li>
-                                    <LinkContainer to="#">
-                                        <a href="/">Other Featured Content</a>
+                                    <LinkContainer to="/browse">
+                                        <a href="/">All Content</a>
                                     </LinkContainer>
                                 </li>
                             </ul>
@@ -43,24 +45,7 @@ export default class FooterComponent extends Component {
                             <h6>Quick Links</h6>
                             <ul className="footer-links">
                                 <li>
-                                    <LinkContainer to="/login">
-                                        <a href="/">Login</a>
-                                    </LinkContainer>
-                                </li>
-                                <li>
-                                    <LinkContainer to="/register">
-                                        <a href="/">Sign Up</a>
-                                    </LinkContainer>
-                                </li>
-                                <li>
-                                    <LinkContainer to="/privacy">
-                                        <a href="/">Privacy Policy</a>
-                                    </LinkContainer>
-                                </li>
-                                <li>
-                                    <LinkContainer to="/terms">
-                                        <a href="/">Terms and Conditions</a>
-                                    </LinkContainer>
+                                    No Quick Links Available
                                 </li>
                             </ul>
                         </div>
@@ -71,7 +56,7 @@ export default class FooterComponent extends Component {
                     <div className="row">
                         <div className="col-md-8 col-sm-6 col-xs-12">
                             <p className="copyright-text">Copyright &copy; {new Date().getFullYear()} All Rights Reserved by Geet Choubey | <a href="mailto:gkchoubery@myseneca.ca">gkchoubery@myseneca.ca</a>.
-            </p>
+                            </p>
                         </div>
 
                         <div className="col-md-4 col-sm-6 col-xs-12">
