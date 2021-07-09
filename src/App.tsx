@@ -5,6 +5,8 @@ import CarouselComponent from './components/carousel'
 import FeaturedComponent, { IProps as FeaturedComponentProps } from './components/featured'
 import WithHeaderFooter from './hoc';
 
+export type SelectedType = '' | 'movies' | 'series';
+
 class App extends React.Component {
 
   featuredContentBlock: FeaturedComponentProps[] = [

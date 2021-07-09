@@ -1,3 +1,14 @@
+.container {
+    max-width: calc(1140px * 1.25);
+}
+
+@media only screen and (max-width: 992px) {
+    .container {
+        max-width: calc(960px * 1.25);
+    }
+  }
+
+
 .user-modal {
     background-color: #383F45;
     color: white;
@@ -9,8 +20,25 @@
 
 .modal-body form button {
     background: linear-gradient(to left, #292129, #212921);
+    border-color: none !important;
 }
 
 .modal-body form button:hover {
     background: #292129;
+    border-color: none !important;
+}
+
+.modal-body form button:active {
+    background: #292129;
+    border-color: none !important;
+}
+
+.modal-body form button:focus {
+    background: #292129;
+    border-color: none !important;
+}
+
+.btn:active {
+    background-color: #212921 !important;
+    border-color: #212921 !important;
 }

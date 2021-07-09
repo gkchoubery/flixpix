@@ -2,18 +2,63 @@
     padding: 10rem 0 4rem;
 }
 
+.btn-group {
+    display: flex;
+    width: 100%;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 0.5rem !important;
+}
+
+.btn-group .btn {
+    flex: 1;
+    border-color: none;
+    border-radius: 0.5rem !important;
+    margin: 8px 12px;
+    background-color: #212921;
+    border-color: #212921 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-group .btn:active {
+    background-color: #212921 !important;
+    border-color: #212921 !important;
+}
+
+.btn-group label i.fas {
+    margin: 0 0.75rem;
+}
+
+.btn-group .active {
+    background-color: #292129 !important;
+    border-color: #292129 !important;
+}
+
+.btn-group label.active, .btn-group label.active:focus {
+    outline: none;
+    box-shadow: none !important;
+}
+
+#browse .container h2 {
+    margin-top: 2rem;
+}
+
 .listing-container {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    flex-flow: row wrap;
     margin: 0 auto;
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-start;
     color: #ddd;
 }
 
 .listing {
+    position: relative;
     padding: 20px 5px 10px;
-    margin: 2rem 0;
+    margin: 2rem 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,12 +74,23 @@
     cursor: pointer;
 }
 
+.listing-badge {
+    position: absolute;
+    top: 1rem;
+    margin-left: -1rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.5rem;
+    background-color: chocolate;
+}
+
 .listing:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
 .listing:hover .listing-title
-/* .listing:hover .listing-description */ {
+/* .listing:hover .listing-description */
+
+    {
     opacity: 1;
     transform: scale(1);
 }

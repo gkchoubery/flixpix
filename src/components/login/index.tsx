@@ -47,7 +47,7 @@ export default class LoginModalComponent extends Component<IProps, IState> {
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        Login
+                        Welcome Back!
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -61,7 +61,7 @@ export default class LoginModalComponent extends Component<IProps, IState> {
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" placeholder="Password" onChange={(e) => this.formInput('password', e.target.value)} />
                         </Form.Group>
-                        <Button className="float-right" variant="primary" type="submit" onClick={this.onFormSubmit} disabled={!this.isFormValid()}>
+                        <Button className="float-right" type="submit" onClick={this.onFormSubmit} disabled={!this.isFormValid()}>
                             Login
                         </Button>
                     </Form>

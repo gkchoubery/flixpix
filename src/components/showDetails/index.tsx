@@ -8,7 +8,7 @@ export interface ShowItem {
     id: number;
     title: string;
     description: string;
-    type: 'movie' | 'series';
+    type: 'movies' | 'series';
     year: number;
     banner: string;
     poster: string;

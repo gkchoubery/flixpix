@@ -5,10 +5,11 @@ import FeaturedItemComponent from "../featuredItem";
 import "./index.css";
 
 import Api from "../../utils/api";
+import { SelectedType } from "../../App";
 
 export interface IProps {
   title: string;
-  type: 'movies' | 'series';
+  type: SelectedType;
 }
 
 interface IState {
