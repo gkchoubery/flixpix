@@ -1,15 +1,15 @@
 import { Component } from "react";
 import { ShowItem } from "../showDetails";
 import { Container } from "react-bootstrap";
-import FeaturedItemComponent from "../featuredItem";
 import "./index.css";
-
+import GetUrl from '../../utils/image';
 import Api from "../../utils/api";
 import { SelectedType } from "../../App";
 
 export interface IProps {
   title: string;
   type: SelectedType;
+  history?: any
 }
 
 interface IState {
@@ -35,7 +35,7 @@ export default class FeaturedComponent extends Component<IProps, IState> {
 
   async componentDidMount() {
     try {
-      let data = await this.api.getFeaturedContent(this.props.type);
+      let data = await this.api.getFeaturedContent(this.props.type, 6);
       this.setState({
         loading: false,
         data,
@@ -48,23 +48,25 @@ export default class FeaturedComponent extends Component<IProps, IState> {
     }
   }
 
+  getDom = (s: ShowItem) => {
+    return <div key={s.id} className="listing" style={{ backgroundImage: `url(${GetUrl(s.poster)})` }}>
+      <div className="listing-badge"><i className={`fas ${s.type === 'movies' ? 'fa-film' : 'fa-tv'}`}></i></div>
+      <h2 className='listing-title'>{s.title}</h2>
+    </div>
+  }
+
+  getContent = () => {
+    return this.state.data.length === 0 ? <p>No results found</p> : this.state.data.map(s => this.getDom(s));
+  }
+
   render() {
-    const featuredShows = !this.state.loading ? (
-      this.state.data && this.state.data.length !== 0 ? (
-        this.state.data.map((s) => (
-          <FeaturedItemComponent key={s.id} data={s} />
-        ))
-      ) : (
-        <p>No Data for this section</p>
-      )
-    ) : (
-      <p>Loading...</p>
-    );
     return (
       <Container>
         <section className="featured">
           <h2>{this.props.title}</h2>
-          <ul>{featuredShows}</ul>
+          <div className="listing-container">
+            {this.getContent()}
+          </div>
         </section>
       </Container>
     );
