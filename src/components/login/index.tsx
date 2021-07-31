@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import './index.css';
 import { Button, Form, Modal } from 'react-bootstrap';
+import Api from '../../utils/api';
 
 interface IProps {
     show: boolean;
@@ -8,17 +9,24 @@ interface IProps {
 }
 
 interface IState {
-    [x: string]: string;
+    email: string;
+    password: string;
+    loading: boolean
 }
 
 export default class LoginModalComponent extends Component<IProps, IState> {
+
+    api: Api;
 
     constructor(props: IProps) {
         super(props);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            loading: false
         }
+
+        this.api = new Api();
     }
 
     isFormValid = () => {
@@ -28,12 +36,19 @@ export default class LoginModalComponent extends Component<IProps, IState> {
     formInput = (type: 'email' | 'password', value: string) => {
         this.setState({
             [type]: value
-        });
+        } as unknown as IState);
     }
 
-    onFormSubmit = (e: React.MouseEvent<HTMLElement>) => {
+    onFormSubmit = async (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault();
-        this.props.onHide();
+        this.setState({
+            loading: true
+        });
+        await this.api.postLogin(this.state.email, this.state.password)
+            .catch(e => console.error(e))
+            .finally(() => {
+                this.props.onHide();
+            });
     }
 
     render() {

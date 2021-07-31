@@ -39,6 +39,6 @@ export default class Api {
     }
 
     public postRegister(data: RegisterType) {
-        return this.doRequest('users/reigster', 'POST', data);
+        return this.doRequest('users/register', 'POST', data);
     }
 }
