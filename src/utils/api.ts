@@ -1,5 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
 import { SelectedType } from '../App';
+import { RegisterType } from '../components/register';
 import { ShowItem } from '../interfaces';
 
 export default class Api {
@@ -8,7 +9,7 @@ export default class Api {
 
     constructor() {
         this.api = axios.create({
-            baseURL: '/api/'
+            baseURL: 'https://immense-spire-15938.herokuapp.com/'
         });
     }
 
@@ -21,19 +22,23 @@ export default class Api {
         }).then(t => t.data);
     }
 
-    public getFeaturedContent(type: SelectedType, limit: number = 6, page: number = 1) {
-        return this.getContent(type, limit, page);
+    public getFeaturedContent(type: SelectedType, limit?: number, page?: number) {
+        return this.doRequest<ShowItem[]>(`shows/featured?${!!type ? `type=${type}` : ''}${limit ? `&limit=${limit}` : ''}${page ? `&page=${page}` : ''}`, 'GET');
     }
 
-    public getContent(type: SelectedType, limit?: number, page?: number) {
-        return this.doRequest<ShowItem[]>(`shows?${!!type ? `type=${type}` : ''}${limit ? `&_limit=${limit}` : ''}${page ? `&_page=${page}` : ''}`, 'GET');
-    }
-
-    public getCarouselImages() {
-        return this.doRequest<ShowItem[]>(`intro`, 'GET');
+    public getContent(type: SelectedType) {
+        return this.doRequest<ShowItem[]>(`shows/${type}`, 'GET');
     }
 
     public getShowDetails(id: string) {
-        return this.doRequest<ShowItem>(`shows/${id}`, 'GET');
+        return this.doRequest<ShowItem>(`shows/details/${id}`, 'GET');
+    }
+
+    public postLogin(email: string, password: string) {
+        return this.doRequest(`users/login`, 'POST', { email, password });
+    }
+
+    public postRegister(data: RegisterType) {
+        return this.doRequest('users/reigster', 'POST', data);
     }
 }
