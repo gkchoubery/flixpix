@@ -2,12 +2,14 @@ import React from 'react';
 import { Button, Collapse, Container, Form, FormControl, Nav, Navbar } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { User } from '../../interfaces/user';
 import './index.css';
 
 export interface IProps extends RouteComponentProps<{}> {
     setModalShow: any;
     onLoginHide: any;
-    onRegisterHide: any,
+    onRegisterHide: any;
+    user?: User;
 };
 
 export type IState = {
@@ -92,8 +94,16 @@ export class HeaderComponent extends React.Component<IProps, IState> {
                                 </div>
                             </Collapse>
                             <a className="nav-link custom" onClick={this.toggleSearch}><i className="fas fa-search"></i></a>
-                            <a className="nav-link custom" onClick={() => this.props.setModalShow('login')}>Login</a>
-                            <a className="nav-link custom" onClick={() => this.props.setModalShow('register')}>Register</a>
+                            {this.props.user ?
+                                <LinkContainer to="/dashboard">
+                                    <Nav.Link>Dashboard</Nav.Link>
+                                </LinkContainer>
+                                :
+                                <>
+                                    <a className="nav-link custom" onClick={() => this.props.setModalShow('login')}>Login</a>
+                                    <a className="nav-link custom" onClick={() => this.props.setModalShow('register')}>Register</a>
+                                </>
+                            }
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

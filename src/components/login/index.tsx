@@ -2,10 +2,12 @@ import { Component } from 'react';
 import './index.css';
 import { Button, Form, Modal } from 'react-bootstrap';
 import Api from '../../utils/api';
+import { User } from '../../interfaces/user';
 
 interface IProps {
     show: boolean;
     onHide: Function;
+    onLogin: (user: User) => void;
 }
 
 interface IState {
@@ -44,14 +46,17 @@ export default class LoginModalComponent extends Component<IProps, IState> {
         await this.setState({
             loading: true
         });
-        await this.api.postLogin(this.state.email, this.state.password)
-            .catch(e => console.error(e))
-            .finally(() => {
-                this.props.onHide();
-                this.setState({
-                    loading: false
-                });
+        try {
+            const user = await this.api.postLogin(this.state.email, this.state.password);
+            this.props.onLogin(user);
+        } catch (e) {
+            console.error(e);
+        } finally {
+            this.props.onHide();
+            await this.setState({
+                loading: false
             });
+        }
     }
 
     render() {

@@ -2,6 +2,7 @@ import axios, { AxiosInstance } from 'axios';
 import { SelectedType } from '../App';
 import { RegisterType } from '../components/register';
 import { ShowItem } from '../interfaces';
+import { User } from '../interfaces/user';
 
 export default class Api {
 
@@ -35,11 +36,11 @@ export default class Api {
     }
 
     public postLogin(email: string, password: string) {
-        return this.doRequest(`users/login`, 'POST', { email, password });
+        return this.doRequest<User>(`users/login`, 'POST', { email, password });
     }
 
     public postRegister(data: RegisterType) {
-        return this.doRequest('users/register', 'POST', data);
+        return this.doRequest<User>('users/register', 'POST', data);
     }
 
     public searchShows(q: string) {

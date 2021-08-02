@@ -11,6 +11,7 @@ import ShowDetailsComponent from './components/showDetails';
 import BrowseComponent from './components/browse';
 import SearchComponent from './components/search';
 import ContainerComponent from './components/container';
+import DashboardComponent from './components/dashboard';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,10 +20,11 @@ ReactDOM.render(
       <Switch>
         <ContainerComponent>
           <Route exact path="/" component={App} />
-          <Route path="/browse" component={BrowseComponent} />
-          <Route path="/detail/:id" component={ShowDetailsComponent} />
-          <Route path="/search" component={SearchComponent} />
-          <Route component={NotFoundComponent} />
+          <Route exact path="/browse" component={BrowseComponent} />
+          <Route exact path="/detail/:id" component={ShowDetailsComponent} />
+          <Route exact path="/search" component={SearchComponent} />
+          <Route exact path='/dashboard' component={DashboardComponent} />
+          <Route path="/not_found" component={NotFoundComponent} />
         </ContainerComponent>
       </Switch>
     </Router>
