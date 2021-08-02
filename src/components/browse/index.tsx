@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import { Container, Row, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
-import WithHeaderFooter from '../../hoc'
 import { ShowItem } from '../../interfaces';
 import './index.css';
 import Api from '../../utils/api';
@@ -101,5 +100,4 @@ class BrowseComponent extends Component<RouteComponentProps<any>, IState> {
 
 }
 
-
-export default WithHeaderFooter(BrowseComponent);
+export default BrowseComponent;

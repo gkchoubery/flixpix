@@ -3,7 +3,6 @@ import './App.css';
 import ContentComponent from './components/content';
 import CarouselComponent from './components/carousel'
 import FeaturedComponent, { IProps as FeaturedComponentProps } from './components/featured'
-import WithHeaderFooter from './hoc';
 
 export type SelectedType = '' | 'movies' | 'series';
 
@@ -31,4 +30,4 @@ class App extends React.Component {
   }
 }
 
-export default WithHeaderFooter(App);
+export default App;

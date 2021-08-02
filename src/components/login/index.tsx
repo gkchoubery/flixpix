@@ -41,13 +41,16 @@ export default class LoginModalComponent extends Component<IProps, IState> {
 
     onFormSubmit = async (e: React.MouseEvent<HTMLElement>) => {
         e.preventDefault();
-        this.setState({
+        await this.setState({
             loading: true
         });
         await this.api.postLogin(this.state.email, this.state.password)
             .catch(e => console.error(e))
             .finally(() => {
                 this.props.onHide();
+                this.setState({
+                    loading: false
+                });
             });
     }
 

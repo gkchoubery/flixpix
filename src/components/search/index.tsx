@@ -1,5 +1,4 @@
 import React from 'react';
-import WithHeaderFooter from '../../hoc';
 import { Container } from 'react-bootstrap';
 import './index.css';
 import { RouteComponentProps } from 'react-router-dom';
@@ -88,4 +87,4 @@ class SearchComponent extends React.Component<RouteProps, IState> {
     }
 }
 
-export default WithHeaderFooter(SearchComponent);
+export default SearchComponent;
