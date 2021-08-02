@@ -9,6 +9,7 @@ import NotFoundComponent from './components/notfound';
 import './index.css'
 import ShowDetailsComponent from './components/showDetails';
 import BrowseComponent from './components/browse';
+import SearchComponent from './components/search';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -18,6 +19,7 @@ ReactDOM.render(
         <Route exact path="/" component={App} />
         <Route path="/browse" component={BrowseComponent} />
         <Route path="/detail/:id" component={ShowDetailsComponent} />
+        <Route path="/search" component={SearchComponent} />
         <Route component={NotFoundComponent} />
       </Switch>
     </Router>

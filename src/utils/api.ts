@@ -41,4 +41,8 @@ export default class Api {
     public postRegister(data: RegisterType) {
         return this.doRequest('users/register', 'POST', data);
     }
+
+    public searchShows(q: string) {
+        return this.doRequest<ShowItem[]>(`shows/search?q=${q}`, 'GET');
+    }
 }

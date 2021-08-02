@@ -53,7 +53,7 @@ class ShowDetailsComponent extends Component<RouteComponentProps<Params>, IState
 
                 <Container>
                     <div className="content">
-                        <img src={GetUrl(show?.poster!)}></img>
+                        <img alt={show?.title} src={GetUrl(show?.poster!)}></img>
                         <div>
                             <h1>{show?.title} <span className="show-type"><i className={`fas ${show?.type === 'movies' ? 'fa-film' : 'fa-tv'}`}></i></span></h1>
                             <h3>{show?.title}</h3>

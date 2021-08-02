@@ -5,3 +5,17 @@
 a.custom {
   cursor: pointer;
 }
+
+.navbar-nav > * {
+  margin: 0 8px;
+}
+
+.navbar-nav form .btn-outline-success {
+  background-color: #212921;
+  border-color: #212921;
+  color: white;
+}
+
+input[type=search]:not(:valid) ~ .close-icon {
+	display: none;
+}

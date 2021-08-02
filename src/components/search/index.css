@@ -1,0 +1,11 @@
+#search {
+    padding: 10rem 0 4rem;
+}
+
+div.no-results {
+    height: 40vh;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}

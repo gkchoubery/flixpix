@@ -30,7 +30,7 @@ export default class LoginModalComponent extends Component<IProps, IState> {
     }
 
     isFormValid = () => {
-        return !!this.state.email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/) && this.state.password.trim().length > 3;
+        return !!this.state.email.match(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/) && this.state.password.trim().length > 3;
     }
 
     formInput = (type: 'email' | 'password', value: string) => {

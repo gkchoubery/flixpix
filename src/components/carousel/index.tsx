@@ -1,6 +1,5 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
-import Api from '../../utils/api';
 import { ShowItem } from '../../interfaces';
 import './index.css';
 

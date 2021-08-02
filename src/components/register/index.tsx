@@ -41,7 +41,7 @@ export default class RegisterModalComponent extends Component<IProps, IState> {
   }
 
   isFormValid = () => {
-    return !!this.state.email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/) &&
+    return !!this.state.email.match(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/) &&
       this.state.password.trim().length > 3 &&
       this.state.repassword === this.state.password &&
       this.state.firstName.trim().length > 3 &&
