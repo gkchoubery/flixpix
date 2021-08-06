@@ -11,23 +11,11 @@ export default class Api {
     constructor() {
         this.api = axios.create({
             baseURL: 'https://immense-spire-15938.herokuapp.com/',
-            // baseURL: 'http://localhost:8080/',
             withCredentials: true
         });
     }
 
-    private doRequest<R>(path: string, method: 'POST' | 'PUT' | 'GET', body?: any, form: boolean = false): Promise<R> {
-        if (form) {
-            this.api.interceptors.request.use((config: any) => {
-                const params = new URLSearchParams();
-                Object.keys(body).forEach(k => {
-                    params.append(k, body[k]);
-                });
-                config.data = params;
-                config.params = {};
-                return config;
-            }, e => Promise.reject(e));
-        }
+    private doRequest<R>(path: string, method: 'POST' | 'PUT' | 'GET', body?: object): Promise<R> {
         return this.api.request({
             url: path,
             method: method,
@@ -48,8 +36,8 @@ export default class Api {
         return this.doRequest<ShowItem>(`shows/details/${id}`, 'GET');
     }
 
-    public postLogin(username: string, password: string) {
-        return this.doRequest<User>(`login`, 'POST', { username, password }, true);
+    public postLogin(email: string, password: string) {
+        return this.doRequest<User>(`login`, 'POST', { email, password });
     }
 
     public postRegister(data: RegisterType) {
@@ -61,6 +49,6 @@ export default class Api {
     }
 
     public getDashboard(id: String) {
-        return this.doRequest<User>(`/`, 'GET');
+        return this.doRequest<User>(`users/${id}`, 'GET');
     }
 }
