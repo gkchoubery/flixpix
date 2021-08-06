@@ -11,6 +11,7 @@ export default class Api {
     constructor() {
         this.api = axios.create({
             baseURL: 'https://immense-spire-15938.herokuapp.com/',
+            // baseURL: 'http://localhost:8080/',
             withCredentials: true
         });
     }
