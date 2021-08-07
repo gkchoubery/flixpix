@@ -6,7 +6,7 @@ import Api from '../../utils/api';
 interface IProps {
     show: boolean;
     onHide: Function;
-    onLogin: () => void;
+    onLogin: Function;
 }
 
 interface IState {

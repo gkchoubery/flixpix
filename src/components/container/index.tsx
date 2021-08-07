@@ -5,6 +5,7 @@ import LoginModalComponent from '../../components/login';
 import RegisterModalComponent from '../../components/register';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import Api from '../../utils/api';
+import Cookies from 'js-cookie';
 
 interface IState {
     loginModalShow: boolean;
@@ -29,7 +30,7 @@ class ContainerComponent extends React.Component<RouteComponentProps, IState> {
     }
 
     async componentDidMount() {
-        const id = localStorage.getItem('user');
+        const id = Cookies.get('user');
         if (id) {
             try {
                 await this.api.getUserDetails();

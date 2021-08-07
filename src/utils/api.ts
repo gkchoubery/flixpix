@@ -37,7 +37,7 @@ export default class Api {
         return this.doRequest<ShowItem>(`shows/details/${id}`, 'GET');
     }
 
-    public postLogin(email: string, password: string): Promise<User> {
+    public postLogin(email: string, password: string) {
         const params = new URLSearchParams();
         params.append('username', email);
         params.append('password', password);
@@ -55,9 +55,5 @@ export default class Api {
 
     public searchShows(q: string) {
         return this.doRequest<ShowItem[]>(`shows/search?q=${q}`, 'GET');
-    }
-
-    public getDashboard(id: String) {
-        return this.doRequest<User>(`users/${id}`, 'GET');
     }
 }
