@@ -2,7 +2,6 @@ import { Component } from 'react';
 import './index.css';
 import { Button, Form, Modal } from 'react-bootstrap';
 import Api from '../../utils/api';
-import { User } from '../../interfaces/user';
 
 interface IProps {
     show: boolean;
