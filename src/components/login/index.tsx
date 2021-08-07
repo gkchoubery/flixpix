@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import './index.css';
-import { Button, Form, Modal } from 'react-bootstrap';
+import { Alert, Button, Form, Modal } from 'react-bootstrap';
 import Api from '../../utils/api';
 
 interface IProps {
@@ -12,7 +12,9 @@ interface IProps {
 interface IState {
     email: string;
     password: string;
-    loading: boolean
+    loading: boolean;
+    error: boolean;
+    errorMessage: string;
 }
 
 export default class LoginModalComponent extends Component<IProps, IState> {
@@ -24,7 +26,9 @@ export default class LoginModalComponent extends Component<IProps, IState> {
         this.state = {
             email: '',
             password: '',
-            loading: false
+            loading: false,
+            error: false,
+            errorMessage: 'Invalid Email Address or Password. Please try again.'
         }
 
         this.api = new Api();
@@ -48,13 +52,13 @@ export default class LoginModalComponent extends Component<IProps, IState> {
         try {
             await this.api.postLogin(this.state.email, this.state.password);
             this.props.onLogin();
-        } catch (e) {
-            console.error(JSON.stringify(e));
-        } finally {
-            this.props.onLogin();
             this.props.onHide();
             await this.setState({
                 loading: false
+            });
+        } catch (e) {
+            this.setState({
+                error: true
             });
         }
     }
@@ -75,6 +79,7 @@ export default class LoginModalComponent extends Component<IProps, IState> {
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
+                        {this.state.error ? <Alert variant="danger">{this.state.errorMessage}</Alert> : ''}
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control type="email" placeholder="Enter email" onChange={(e) => this.formInput('email', e.target.value)} />
