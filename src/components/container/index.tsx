@@ -33,12 +33,15 @@ class ContainerComponent extends React.Component<RouteComponentProps, IState> {
         if (id) {
             try {
                 await this.api.getUserDetails();
+                await this.onLogin();
                 await this.setState({
                     loading: false
                 })
-                await this.onLogin();
             } catch(e) {
                 console.info('User token expired');
+                await this.setState({
+                    loading: false
+                })
             }
         }
     }
