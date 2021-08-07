@@ -2,14 +2,14 @@ import React from 'react';
 import { Button, Collapse, Container, Form, FormControl, Nav, Navbar } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { User } from '../../interfaces/user';
 import './index.css';
 
 export interface IProps extends RouteComponentProps<{}> {
     setModalShow: any;
     onLoginHide: any;
     onRegisterHide: any;
-    user?: User;
+    authenticated?: boolean;
+    loading: boolean;
 };
 
 export type IState = {
@@ -94,7 +94,7 @@ export class HeaderComponent extends React.Component<IProps, IState> {
                                 </div>
                             </Collapse>
                             <a className="nav-link custom" onClick={this.toggleSearch}><i className="fas fa-search"></i></a>
-                            {this.props.user ?
+                            {this.props.loading ? <p className="nav-link custom">Loading</p> : this.props.authenticated ?
                                 <LinkContainer to="/dashboard">
                                     <Nav.Link>Dashboard</Nav.Link>
                                 </LinkContainer>

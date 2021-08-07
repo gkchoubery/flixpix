@@ -3,25 +3,44 @@ import HeaderComponent from '../../components/header';
 import FooterComponent from '../../components/footer';
 import LoginModalComponent from '../../components/login';
 import RegisterModalComponent from '../../components/register';
-import { User } from '../../interfaces/user';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
+import Api from '../../utils/api';
 
 interface IState {
     loginModalShow: boolean;
     registerModalShow: boolean;
-    user?: User;
+    isAuthenticated: boolean;
+    loading: boolean;
 }
 
 class ContainerComponent extends React.Component<RouteComponentProps, IState> {
 
+    api: Api;
+
     constructor(props: RouteComponentProps) {
         super(props);
-        const user = localStorage.getItem('user');
+        this.api = new Api();
         this.state = {
             loginModalShow: false,
             registerModalShow: false,
-            user: user ? JSON.parse(user) : null
+            isAuthenticated: false,
+            loading: true
         };
+    }
+
+    async componentDidMount() {
+        const id = localStorage.getItem('user');
+        if (id) {
+            try {
+                await this.api.getUserDetails();
+                await this.setState({
+                    loading: false
+                })
+                await this.onLogin();
+            } catch(e) {
+                console.info('User token expired');
+            }
+        }
     }
 
     setModalShow = (type: 'login' | 'register') => {
@@ -43,20 +62,19 @@ class ContainerComponent extends React.Component<RouteComponentProps, IState> {
         });
     }
 
-    onLogin = async (user: User) => {
+    onLogin = async () => {
         await this.setState({
-            user
+            isAuthenticated: true
         });
-        localStorage.setItem('user', JSON.stringify(user));
         this.props.history.push('/dashboard');
     }
 
     render() {
         return (
             <>
-                <HeaderComponent user={this.state.user} setModalShow={this.setModalShow} onLoginHide={this.onLoginHide} onRegisterHide={this.onRegisterHide} />
+                <HeaderComponent loading={this.state.loading} authenticated={this.state.isAuthenticated} setModalShow={this.setModalShow} onLoginHide={this.onLoginHide} onRegisterHide={this.onRegisterHide} />
                 {this.props.children}
-                {this.state.user ? '' :
+                {this.state.isAuthenticated ? '' :
                     <>
                         <LoginModalComponent onLogin={this.onLogin} onHide={this.onLoginHide} show={this.state.loginModalShow} />
                         <RegisterModalComponent onHide={this.onRegisterHide} show={this.state.registerModalShow} />

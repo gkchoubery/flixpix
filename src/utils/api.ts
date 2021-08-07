@@ -10,8 +10,8 @@ export default class Api {
 
     constructor() {
         this.api = axios.create({
-            baseURL: 'https://immense-spire-15938.herokuapp.com/',
-            // baseURL: 'http://localhost:8080/',
+            // baseURL: 'https://immense-spire-15938.herokuapp.com/',
+            baseURL: 'http://localhost:8080/',
             withCredentials: true
         });
     }
@@ -37,12 +37,20 @@ export default class Api {
         return this.doRequest<ShowItem>(`shows/details/${id}`, 'GET');
     }
 
-    public postLogin(email: string, password: string) {
-        return this.doRequest<User>(`login`, 'POST', { email, password });
+    public postLogin(email: string, password: string): Promise<User> {
+        const params = new URLSearchParams();
+        params.append('username', email);
+        params.append('password', password);
+        return this.api.post('login', params);
+        // return this.doRequest<User>(`auth/login`, 'POST', { email, password });
+    }
+
+    public getUserDetails() {
+        return this.doRequest<User>('/', 'GET');
     }
 
     public postRegister(data: RegisterType) {
-        return this.doRequest<User>('register', 'POST', data);
+        return this.doRequest<User>('auth/register', 'POST', data);
     }
 
     public searchShows(q: string) {

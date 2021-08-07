@@ -7,7 +7,7 @@ import { User } from '../../interfaces/user';
 interface IProps {
     show: boolean;
     onHide: Function;
-    onLogin: (user: User) => void;
+    onLogin: () => void;
 }
 
 interface IState {
@@ -47,11 +47,12 @@ export default class LoginModalComponent extends Component<IProps, IState> {
             loading: true
         });
         try {
-            const user = await this.api.postLogin(this.state.email, this.state.password);
-            this.props.onLogin(user);
+            await this.api.postLogin(this.state.email, this.state.password);
+            this.props.onLogin();
         } catch (e) {
-            console.error(e);
+            console.error(JSON.stringify(e));
         } finally {
+            this.props.onLogin();
             this.props.onHide();
             await this.setState({
                 loading: false
